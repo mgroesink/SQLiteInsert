@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import static android.R.id.edit;
+
 public class MainActivity extends AppCompatActivity {
     EditText Name, Pass;
     myDbAdapter helper;
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         Name= (EditText) findViewById(R.id.editText);
         Pass= (EditText) findViewById(R.id.editText2);
         helper = new myDbAdapter(this);
+        context = this;
     }
 
     public void addUser(View view)
@@ -32,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         } else
         {
             Message.message(context,"Successful");
+            Name.setText("");
+            Pass.setText("");
+            Name.requestFocus();
         }
     }
 }

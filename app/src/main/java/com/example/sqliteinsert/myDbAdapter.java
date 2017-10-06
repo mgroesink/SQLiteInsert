@@ -27,13 +27,13 @@ public class myDbAdapter  {
    {
        private static final String DATABASE_NAME = "myDatabase";
        private static final String TABLE_NAME = "myTable";
-       private static final int DATABASE_Version = 1;
+       private static final int DATABASE_Version = 2;
        private static final String UID="_id";
        private static final String NAME = "Name";
        private static final String PASSWORD= "Password";
        private static final String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME +
-               "( "+UID+" INTEGER PRIMARY KEY AUTOINCREMENT ," +NAME+ "VARCHAR(225)" + PASSWORD+"VARCHAR(225));";
-      // private static final String DROP_TABLE ="DROP TABLE IF EXISTS "+TABLE_NAME;
+               "( "+UID+" INTEGER PRIMARY KEY AUTOINCREMENT ," +NAME+ " VARCHAR(225), " + PASSWORD+" VARCHAR(225));";
+      private static final String DROP_TABLE ="DROP TABLE IF EXISTS "+TABLE_NAME;
        private Context context;
 
        public myDbHelper(Context context) {
@@ -55,13 +55,13 @@ public class myDbAdapter  {
 
        @Override
        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-          /* try {
+           try {
                Message.message(context,"OnUpgrade");
                db.execSQL(DROP_TABLE);
                onCreate(db);
            }catch (Exception e) {
                Message.message(context,""+e);
-                          }*/
+                          }
        }
    }
 }
